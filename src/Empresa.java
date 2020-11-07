@@ -27,8 +27,7 @@ public class Empresa {
 	public Boolean agregarVenta(Venta venta) {
 		Vendedor vendedor= buscarVendedor(venta.getVendedor().getNumeroDeEmpleado());
 		if(listaDeEmpleados.contains(vendedor) &&
-				listaDeEquiposDisponibles.contains(venta.getEquipoVendido()) &&
-				listaDePlanes.contains(venta.getPlanVendido())) {
+				listaDeEquiposDisponibles.contains(venta.getEquipoVendido())) {
 			if(listaDeVentas.add(venta))
 			vendedor.setComision();
 			return true;

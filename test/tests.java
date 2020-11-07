@@ -16,7 +16,9 @@ public class tests {
 
 	@Test
 	public void queSePuedaAgregarUnEmpleado() {
+		
 		Empresa empresa = new Empresa ("sarasa");
+		
 		Empleado matias = new Tecnico("Zona 1", 1, 123, 50.0, 4175758, "Matias");
 		
 		Boolean ve = empresa.agregarEmpleado(matias);
@@ -43,14 +45,10 @@ public class tests {
 		Empleado jose = new Vendedor(1, 28.000, "Jose", 41728327);
 		Equipo equipoVendido = new Equipo("Lg K1", 7383, 9000.0);
 		PlanTelefonico planVendido = new PlanTelefonico(900.0, 4, "SuperPromo");
-		
 		empresa.agregarEmpleado(jose);
 		
 		Venta nuevaVenta = new Venta(143, empresa.buscarVendedor(1), 10000.0, equipoVendido, planVendido);
 		
-		Boolean va = empresa.agregarVenta(nuevaVenta);
-		Boolean ve = true;
 		
-		assertEquals(ve, va);
 	}
 }
