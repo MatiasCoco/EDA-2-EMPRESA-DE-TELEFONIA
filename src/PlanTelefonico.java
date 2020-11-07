@@ -55,7 +55,9 @@ public class PlanTelefonico {
 			return false;
 		return true;
 	}
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "PlanTelefonico [precio=" + precio + ", id=" + id + ", descripcion=" + descripcion + "]";
+	}
 }

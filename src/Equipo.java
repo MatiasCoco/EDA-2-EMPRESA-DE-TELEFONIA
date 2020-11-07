@@ -60,4 +60,10 @@ public class Equipo {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Equipo [nombreDelEquipo=" + nombreDelEquipo + ", codigoDelProducto=" + codigoDelProducto + ", precio="
+				+ precio + "]";
+	}
 }
