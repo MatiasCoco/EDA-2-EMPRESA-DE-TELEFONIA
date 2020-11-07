@@ -19,8 +19,8 @@ public class Empresa {
 		this.listaDeEquiposDisponibles= new HashSet<Equipo>();
 	}
 	
-	public Boolean agregarEmpleado(Tecnico empleado) {
-		
-		return true;
+	public Boolean agregarEmpleado(Empleado empleado) {
+		return listaDeEmpleados.add(empleado);
 	}
+	
 }

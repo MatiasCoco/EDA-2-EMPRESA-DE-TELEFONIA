@@ -10,6 +10,20 @@ public class Tecnico extends Empleado {
 		this.zonaDeTrabajo = zonaDeTrabajo;
 		this.numeroDeCamionetaAsignada = numeroDeCamionetaAsignada;
 	}
-	
-	
+
+	public String getZonaDeTrabajo() {
+		return zonaDeTrabajo;
+	}
+
+	public void setZonaDeTrabajo(String zonaDeTrabajo) {
+		this.zonaDeTrabajo = zonaDeTrabajo;
+	}
+
+	public Integer getNumeroDeCamionetaAsignada() {
+		return numeroDeCamionetaAsignada;
+	}
+
+	public void setNumeroDeCamionetaAsignada(Integer numeroDeCamionetaAsignada) {
+		this.numeroDeCamionetaAsignada = numeroDeCamionetaAsignada;
+	}
 }

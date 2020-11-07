@@ -15,6 +15,4 @@ public class AgenteDeServicio extends Empleado {
 	public void setSector(Sector sector) {
 		this.sector = sector;
 	}
-	
-	
 }
