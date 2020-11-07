@@ -33,7 +33,7 @@ public class Empresa {
 		
 	}
 	public Boolean cambiarEstadoReclamo(Integer nroReclamo,Boolean estado) {
-		for (consulta reclamo : consultas ) {
+		for (consulta reclamo : consulta ) {
 			if(reclamo.getNroReclamo().equals(nroReclamo))
 				reclamo.setEstado(estado);
 		}
