@@ -58,7 +58,6 @@ public class Empresa {
 				return equipoActual;
 			}
 		}
-		
 		return null;
 	}
 	
@@ -73,24 +72,21 @@ public class Empresa {
 		return null;
 	}
 	
-	public Boolean ModificarElPrecioDeUnPlanTelefonico(Double precioActualizado, Integer IdpPlanQueDeseoModificar) {
+	public Boolean ModificarElPrecioDeUnPlanTelefonico(Double precioActualizado, Integer IdPlanQueDeseoModificar) {
 		
-		if(this.buscarPlan(IdpPlanQueDeseoModificar)!=null) {
+		if(this.buscarPlan(IdPlanQueDeseoModificar)!=null) {
 			
-			this.buscarPlan(IdpPlanQueDeseoModificar).setPrecio(precioActualizado);
+			this.buscarPlan(IdPlanQueDeseoModificar).setPrecio(precioActualizado);
 			return true;
 		}
 		return false;
 	}
 	
 	public Boolean eliminarPlan(Integer id) {
-		
-		for(PlanTelefonico planActual: this.listaDePlanes) {
 			
 			if(this.buscarPlan(id)!=null) {
 				return this.listaDePlanes.remove(this.buscarPlan(id));
 			}
-		}	
 		return false;
 	}
 }
