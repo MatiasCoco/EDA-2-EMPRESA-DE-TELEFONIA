@@ -16,23 +16,23 @@ public class tests {
 
 	@Test
 	public void queSePuedaAgregarUnEmpleado() {
-<<<<<<< HEAD
+
 		Empresa empresa = new Empresa ("sarasa");
 		Empleado matias = new Tecnico("Zona 1", 1, 123, 50.0, 4175758, "Matias");
 		
-=======
 
-		Empresa empresa = new Empresa("sarasa");
 
-		Empleado matias = new Tecnico("Zona 1", 1, 123, 50.0, 4175758, "Hernan");
+		Empresa empresa1 = new Empresa("sarasa");
 
->>>>>>> 73ffdba692079c22f29effd1bde9ef028c2cb66d
-		Boolean ve = empresa.agregarEmpleado(matias);
+		Empleado matias1 = new Tecnico("Zona 1", 1, 123, 50.0, 4175758, "Hernan");
+
+
+		Boolean ve = empresa1.agregarEmpleado(matias1);
 		Boolean va = true;
 
 		assertEquals(ve, va);
 	}
-<<<<<<< HEAD
+
 	
 	@Test
 	public void queSePuedaBuscarUnVendedor() {
@@ -61,7 +61,8 @@ public class tests {
 		Boolean ve = true;
 		
 		assertEquals(ve, va);
-=======
+	}
+
 
 	@Test
 	public void queSePuedaAgregarUnEquipo() {
@@ -136,6 +137,6 @@ public class tests {
 		empresa.eliminarPlan(10);
 		Integer resultadoObtenido=empresa.getPlanesVigentes().size();
 		assertEquals(resultadoEsperado, resultadoObtenido);	
->>>>>>> 73ffdba692079c22f29effd1bde9ef028c2cb66d
+
 	}
 }

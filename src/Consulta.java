@@ -4,16 +4,17 @@ public class Consulta {
 	private String descripcion;
 	private Estado estado;
 	private Empleado empleadoAsignado=null;
-	private Integer numeroConsulta;
+	private Cliente cliente;
 	
-	public Consulta(Integer nroConsulta, String descripcion, Estado estado) {
+	
+	public Consulta(Integer nroConsulta, String descripcion, Estado estado,Cliente cliente,Empleado empleado) {
 		super();
 		this.nroConsulta = nroConsulta;
 		this.descripcion = descripcion;
 		this.estado = estado;
 	}
 
-	public Enum getEstado() {
+	public Estado getEstado() {
 		return estado;
 	}
 
@@ -25,11 +26,17 @@ public class Consulta {
 		empleadoAsignado=empleadoAsignar;
 		
 	}
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public Cliente getClienteDeReclamo() {
+		return cliente;
+	}
 	public Empleado getEmpleadoAsignado() {
 		return empleadoAsignado;
 	}
 	public Integer getNroConsulta() {
-		return numeroConsulta;
+		return nroConsulta;
 	}
 
 	
