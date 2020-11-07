@@ -26,4 +26,5 @@ public class Tecnico extends Empleado {
 	public void setNumeroDeCamionetaAsignada(Integer numeroDeCamionetaAsignada) {
 		this.numeroDeCamionetaAsignada = numeroDeCamionetaAsignada;
 	}
+	
 }
