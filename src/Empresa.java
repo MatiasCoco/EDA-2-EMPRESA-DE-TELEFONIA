@@ -8,7 +8,7 @@ public class Empresa {
 	private Set<Cliente> listaDeClientes;
 	private Set<PlanTelefonico> listaDePlanes;
 	private Set<Equipo> listaDeEquiposDisponibles;
-	
+	private Set <Consulta> listaDeConsultas;
 	private Integer contadorConsultas=0;
 
 	public Empresa(String nombreDeLaEmpresa) {
@@ -19,6 +19,7 @@ public class Empresa {
 		this.listaDeClientes= new HashSet<Cliente>();
 		this.listaDePlanes= new HashSet<PlanTelefonico>();
 		this.listaDeEquiposDisponibles= new HashSet<Equipo>();
+		this.listaDeConsultas=new HashSet<Consulta>();
 	}
 	
 	public Boolean agregarEmpleado(Empleado empleado) {
@@ -27,16 +28,18 @@ public class Empresa {
 	public void reclamoTecnico(Tecnico tecnicoAsignar, String descripcionReclamo,Cliente cliente) {
 		
 		contadorConsultas++;
-		Consulta reclamo= new Reclamo (contadorConsultas,descripcionReclamo,false,cliente);
+		Consulta reclamo= new Reclamo (contadorConsultas,descripcionReclamo,Estado.enCurso,cliente,tecnicoAsignar);
 		reclamo.asignarEmpleado(tecnicoAsignar);
-		consultas.add(reclamo);
+		listaDeConsultas.add(reclamo);
 		
 	}
-	public Boolean cambiarEstadoReclamo(Integer nroReclamo,Boolean estado) {
-		for (consulta reclamo : consultas ) {
-			if(reclamo.getNroReclamo().equals(nroReclamo))
-				reclamo.setEstado(estado);
+	public Boolean cambiarEstadoReclamo(Integer nroReclamo,Estado estado) {
+		for (Consulta consulta : listaDeConsultas){
+			if(consulta.getNroConsulta().equals(nroReclamo))
+				consulta.setEstado(estado);
+				return true;
 		}
+		return false;
 	}
 
 }
