@@ -13,7 +13,6 @@ public class Empresa {
 	public Empresa(String nombreDeLaEmpresa) {
 		
 		this.nombreDeLaEmpresa=nombreDeLaEmpresa;
-		
 		this.listaDeEmpleados= new HashSet<Empleado>();
 		this.listaDeClientes= new HashSet<Cliente>();
 		this.listaDePlanes= new HashSet<PlanTelefonico>();
@@ -27,7 +26,7 @@ public class Empresa {
 	public Boolean agregarVenta(Venta venta) {
 		Vendedor vendedor= buscarVendedor(venta.getVendedor().getNumeroDeEmpleado());
 		if(listaDeEmpleados.contains(vendedor) &&
-				listaDeEquiposDisponibles.contains(venta.getEquipoVendido())) {
+				listaDeEquiposDisponibles.contains(venta.getEquipoVendido()) && listaDePlanes.contains(venta.getPlanVendido())) {
 			if(listaDeVentas.add(venta))
 			vendedor.setComision();
 			return true;
