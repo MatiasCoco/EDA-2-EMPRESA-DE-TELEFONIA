@@ -1,3 +1,4 @@
+package ar.edu.unlam.EDA2.pb2;
 
 public class Cliente extends Persona {
 
@@ -10,6 +11,13 @@ public class Cliente extends Persona {
 		super(nombre, dni);
 		this.numeroDeCliente = numeroDeCliente;
 		this.planDelCliente = planDelCliente;
+		this.numeroDeTelefono = numeroDeTelefono;
+	}
+	
+	public Cliente(String nombre, Integer dni, Integer numeroDeCliente,
+			Integer numeroDeTelefono) {
+		super(nombre, dni);
+		this.numeroDeCliente = numeroDeCliente;
 		this.numeroDeTelefono = numeroDeTelefono;
 	}
 

@@ -1,3 +1,4 @@
+package ar.edu.unlam.EDA2.pb2;
 
 public class Equipo {
 
@@ -59,5 +60,11 @@ public class Equipo {
 		} else if (!codigoDelProducto.equals(other.codigoDelProducto))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Equipo [nombreDelEquipo=" + nombreDelEquipo + ", codigoDelProducto=" + codigoDelProducto + ", precio="
+				+ precio + "]";
 	}
 }

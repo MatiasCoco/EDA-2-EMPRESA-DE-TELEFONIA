@@ -1,3 +1,4 @@
+package ar.edu.unlam.EDA2.pb2;
 
 public class PlanTelefonico {
 
@@ -55,7 +56,9 @@ public class PlanTelefonico {
 			return false;
 		return true;
 	}
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "PlanTelefonico [precio=" + precio + ", id=" + id + ", descripcion=" + descripcion + "]";
+	}
 }
