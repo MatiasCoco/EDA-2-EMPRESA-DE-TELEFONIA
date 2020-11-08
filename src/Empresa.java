@@ -22,6 +22,7 @@ public class Empresa {
 		this.listaDePlanes = new HashSet<PlanTelefonico>();
 		this.listaDeEquiposDisponibles = new HashSet<Equipo>();
 		this.listaDeConsultas=new HashSet<Consulta>();
+		this.listaDeVentas = new HashSet<Venta>();
 	}
 
 	public Boolean agregarEmpleado(Empleado empleado) {

@@ -19,15 +19,8 @@ public class tests {
 
 		Empresa empresa = new Empresa ("sarasa");
 		Empleado matias = new Tecnico("Zona 1", 1, 123, 50.0, 4175758, "Matias");
-		
 
-
-		Empresa empresa1 = new Empresa("sarasa");
-
-		Empleado matias1 = new Tecnico("Zona 1", 1, 123, 50.0, 4175758, "Hernan");
-
-
-		Boolean ve = empresa1.agregarEmpleado(matias1);
+		Boolean ve = empresa.agregarEmpleado(matias);
 		Boolean va = true;
 
 		assertEquals(ve, va);
@@ -54,6 +47,8 @@ public class tests {
 		PlanTelefonico planVendido = new PlanTelefonico(900.0, 4, "SuperPromo");
 		
 		empresa.agregarEmpleado(jose);
+		empresa.agregarEquipo(equipoVendido);
+		empresa.agregarPlan(planVendido);
 		
 		Venta nuevaVenta = new Venta(143, empresa.buscarVendedor(1), 10000.0, equipoVendido, planVendido);
 		
@@ -87,8 +82,8 @@ public class tests {
 		Integer valorEsperado = 0;
 		empresa.eliminarEquipoViejo(123);
 		Integer valorObtenido = empresa.getEquiposVigentes().size();
+		
 		assertEquals(valorEsperado, valorObtenido);
-
 	}
 
 	@Test
@@ -113,6 +108,7 @@ public class tests {
 		PlanTelefonico planEsperado = new PlanTelefonico(1000.0, 10, "Plan Basico");
 		empresa.agregarPlan(planEsperado);
 		PlanTelefonico PlanObtenido = empresa.buscarPlan(10);
+		
 		assertEquals(planEsperado, PlanObtenido);
 	}
 	
