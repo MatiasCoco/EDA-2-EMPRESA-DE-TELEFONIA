@@ -1,18 +1,18 @@
 
 public class AgenteDeServicio extends Empleado {
-
-	private Sector sector;
-
-	public AgenteDeServicio(Integer numeroDeEmpleado, Double sueldo, String nombre, Integer dni, Sector sector) {
+	
+	private Boolean ocupado;
+	
+	public AgenteDeServicio(Integer numeroDeEmpleado, Double sueldo, String nombre, Integer dni, Boolean ocupado) {
 		super(numeroDeEmpleado, sueldo, nombre, dni);
-		this.sector = sector;
+		this.ocupado = ocupado;
 	}
 
-	public Sector getSector() {
-		return sector;
+	public Boolean getOcupado() {
+		return ocupado;
 	}
 
-	public void setSector(Sector sector) {
-		this.sector = sector;
+	public void setOcupado(Boolean ocupado) {
+		this.ocupado = ocupado;
 	}
 }
