@@ -2,7 +2,7 @@
 public class Vendedor extends Empleado {
 
 	private Double comision;
-	private final Double PORCENTAJE_DE_COMISION = 0.5;
+	private final Double PORCENTAJE_DE_COMISION = 0.05;
 	
 	public Vendedor(Integer numeroDeEmpleado, Double sueldo, String nombre, Integer dni) {
 		super(numeroDeEmpleado, sueldo, nombre, dni);
@@ -12,8 +12,8 @@ public class Vendedor extends Empleado {
 		return comision;
 	}
 
-	public void setComision() {
-		this.comision = getSueldo() * getPorcentajeDeComision();
+	public void setComision(Double venta) {
+		this.comision = venta * getPorcentajeDeComision();
 	}
 
 	public Double getPorcentajeDeComision() {

@@ -7,29 +7,29 @@ public class Venta {
 	private Cliente cliente;
 	private PlanTelefonico planVendido;
 	
-	public Venta(Vendedor vendedor, Double totalDeVenta, Equipo equipoVendido, PlanTelefonico planVendido, Cliente cliente) {
+	public Venta(Vendedor vendedor, Equipo equipoVendido, PlanTelefonico planVendido, Cliente cliente) {
 		super();
 		this.vendedor = vendedor;
-		this.totalDeVenta = totalDeVenta;
 		this.equipoVendido = equipoVendido;
 		this.planVendido = planVendido;
 		this.cliente = cliente;
+		this.totalDeVenta = getPlanVendido().getPrecio()+getEquipoVendido().getPrecio();
 	}
 	
-	public Venta(Vendedor vendedor, Double totalDeVenta, PlanTelefonico planVendido, Cliente cliente) {
+	public Venta(Vendedor vendedor, PlanTelefonico planVendido, Cliente cliente) {
 		super();
 		this.vendedor = vendedor;
-		this.totalDeVenta = totalDeVenta;
 		this.planVendido = planVendido;
 		this.cliente = cliente;
+		this.totalDeVenta = getPlanVendido().getPrecio();
 	}
 	
 	public Venta(Vendedor vendedor, Double totalDeVenta, Equipo equipoVendido, Cliente cliente) {
 		super();
 		this.vendedor = vendedor;
-		this.totalDeVenta = totalDeVenta;
 		this.equipoVendido = equipoVendido;
 		this.cliente = cliente;
+		this.totalDeVenta =getEquipoVendido().getPrecio();
 	}
 
 	public Integer getNumeroDeVenta() {
@@ -52,9 +52,6 @@ public class Venta {
 		return totalDeVenta;
 	}
 
-	public void setTotalDeVenta(Double totalDeVenta) {
-		this.totalDeVenta = totalDeVenta;
-	}
 
 	public Equipo getEquipoVendido() {
 		return equipoVendido;

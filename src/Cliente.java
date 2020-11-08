@@ -12,6 +12,13 @@ public class Cliente extends Persona {
 		this.planDelCliente = planDelCliente;
 		this.numeroDeTelefono = numeroDeTelefono;
 	}
+	
+	public Cliente(String nombre, Integer dni, Integer numeroDeCliente,
+			Integer numeroDeTelefono) {
+		super(nombre, dni);
+		this.numeroDeCliente = numeroDeCliente;
+		this.numeroDeTelefono = numeroDeTelefono;
+	}
 
 	public Integer getNumeroDeCliente() {
 		return numeroDeCliente;
