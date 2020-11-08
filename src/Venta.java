@@ -7,13 +7,28 @@ public class Venta {
 	private Cliente cliente;
 	private PlanTelefonico planVendido;
 	
-	public Venta(Integer numeroDeVenta, Vendedor vendedor, Double totalDeVenta, Equipo equipoVendido, PlanTelefonico planVendido, Cliente cliente) {
+	public Venta(Vendedor vendedor, Double totalDeVenta, Equipo equipoVendido, PlanTelefonico planVendido, Cliente cliente) {
 		super();
-		this.numeroDeVenta = numeroDeVenta;
 		this.vendedor = vendedor;
 		this.totalDeVenta = totalDeVenta;
 		this.equipoVendido = equipoVendido;
 		this.planVendido = planVendido;
+		this.cliente = cliente;
+	}
+	
+	public Venta(Vendedor vendedor, Double totalDeVenta, PlanTelefonico planVendido, Cliente cliente) {
+		super();
+		this.vendedor = vendedor;
+		this.totalDeVenta = totalDeVenta;
+		this.planVendido = planVendido;
+		this.cliente = cliente;
+	}
+	
+	public Venta(Vendedor vendedor, Double totalDeVenta, Equipo equipoVendido, Cliente cliente) {
+		super();
+		this.vendedor = vendedor;
+		this.totalDeVenta = totalDeVenta;
+		this.equipoVendido = equipoVendido;
 		this.cliente = cliente;
 	}
 

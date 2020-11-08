@@ -5,8 +5,7 @@ public class Consulta {
 	private Estado estado;
 	private Empleado empleadoAsignado=null;
 	private Cliente cliente;
-	
-	
+
 	public Consulta(Integer nroConsulta, String descripcion, Estado estado,Cliente cliente) {
 		super();
 		this.nroConsulta = nroConsulta;
@@ -24,8 +23,8 @@ public class Consulta {
 
 	public void asignarEmpleado(Empleado empleadoAsignar) {
 		empleadoAsignado=empleadoAsignar;
-		
 	}
+	
 	public String getDescripcion() {
 		return descripcion;
 	}
