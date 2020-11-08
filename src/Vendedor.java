@@ -2,23 +2,29 @@
 public class Vendedor extends Empleado {
 
 	private Double comision;
-	private final Integer procentejeDeComision = 5;
+	private final Double PORCENTAJE_DE_COMISION = 0.5;
 	
-	public Vendedor(Integer numeroDeEmpleado, Double sueldo, String nombre, Integer dni, Double comision) {
+	public Vendedor(Integer numeroDeEmpleado, Double sueldo, String nombre, Integer dni) {
 		super(numeroDeEmpleado, sueldo, nombre, dni);
-		this.comision = comision;
 	}
 
 	public Double getComision() {
 		return comision;
 	}
 
-	public void setComision(Double comision) {
-		this.comision = comision;
+	public void setComision() {
+		this.comision = getSueldo() * getPorcentajeDeComision();
 	}
 
-	public Integer getProcentejeDeComision() {
-		return procentejeDeComision;
+	public Double getPorcentajeDeComision() {
+		return PORCENTAJE_DE_COMISION;
 	}
 
+	@Override
+	public String toString() {
+		return "Vendedor [getNombre()=" + getNombre() + ", getDni()=" + getDni() + ", getNumeroDeEmpleado()="
+				+ getNumeroDeEmpleado() + ", getSueldo()=" + getSueldo() + ", comision=" + comision
+				+ ", PORCENTAJE_DE_COMISION=" + PORCENTAJE_DE_COMISION + "]";
+	}
+	
 }
