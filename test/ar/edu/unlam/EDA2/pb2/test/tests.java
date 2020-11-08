@@ -1,6 +1,18 @@
+package ar.edu.unlam.EDA2.pb2.test;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import ar.edu.unlam.EDA2.pb2.AgenteDeServicio;
+import ar.edu.unlam.EDA2.pb2.Cliente;
+import ar.edu.unlam.EDA2.pb2.Empleado;
+import ar.edu.unlam.EDA2.pb2.Empresa;
+import ar.edu.unlam.EDA2.pb2.Equipo;
+import ar.edu.unlam.EDA2.pb2.Estado;
+import ar.edu.unlam.EDA2.pb2.PlanTelefonico;
+import ar.edu.unlam.EDA2.pb2.Tecnico;
+import ar.edu.unlam.EDA2.pb2.Vendedor;
+import ar.edu.unlam.EDA2.pb2.Venta;
 
 public class tests {
 

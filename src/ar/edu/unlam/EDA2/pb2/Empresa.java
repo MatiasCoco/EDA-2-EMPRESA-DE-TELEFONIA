@@ -1,3 +1,4 @@
+package ar.edu.unlam.EDA2.pb2;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -136,26 +137,29 @@ public class Empresa {
 		if (planYEquipoVendido(venta, vendedor)) {
 			return true;
 		}
-		
+
 		else if (planVendido(venta, vendedor)) {
 			return true;
 		}
-		
+
 		else if (equipoVendido(venta, vendedor)) {
 			return true;
 		}
-		
+
 		return false;
 	}
 
 	private Boolean planVendido(Venta venta, Vendedor vendedor) {
+		
 		if (listaDeEmpleados.contains(vendedor) && listaDePlanes.contains(venta.getPlanVendido())
 				&& venta.getEquipoVendido() == null) {
+
 			if (listaDeVentas.add(venta)) {
 				if (!this.listaDeClientes.contains(venta.getCliente())) {
+					
 					this.listaDeClientes.add(venta.getCliente());
-					this.buscarCliente(venta.getCliente().getNumeroDeCliente())
-							.setPlanDelCliente(venta.getPlanVendido());
+					this.buscarCliente(venta.getCliente().getNumeroDeCliente()).setPlanDelCliente(venta.getPlanVendido());
+					
 				}
 				vendedor.setComision(venta.getTotalDeVenta());
 				return true;
@@ -165,12 +169,17 @@ public class Empresa {
 	}
 
 	private Boolean equipoVendido(Venta venta, Vendedor vendedor) {
+		
 		if (listaDeEmpleados.contains(vendedor) && listaDeEquiposDisponibles.contains(venta.getEquipoVendido())
 				&& venta.getPlanVendido() == null) {
+			
 			if (listaDeVentas.add(venta)) {
+				
 				if (!this.listaDeClientes.contains(venta.getCliente())) {
 					this.listaDeClientes.add(venta.getCliente());
+					
 				}
+				
 				vendedor.setComision(venta.getTotalDeVenta());
 				return true;
 			}
@@ -179,13 +188,17 @@ public class Empresa {
 	}
 
 	private Boolean planYEquipoVendido(Venta venta, Vendedor vendedor) {
+		
 		if (listaDeEmpleados.contains(vendedor) && listaDeEquiposDisponibles.contains(venta.getEquipoVendido())
 				&& listaDePlanes.contains(venta.getPlanVendido())) {
+			
 			if (listaDeVentas.add(venta)) {
+				
 				if (!this.listaDeClientes.contains(venta.getCliente())) {
+					
 					this.listaDeClientes.add(venta.getCliente());
-					this.buscarCliente(venta.getCliente().getNumeroDeCliente())
-							.setPlanDelCliente(venta.getPlanVendido());
+					this.buscarCliente(venta.getCliente().getNumeroDeCliente()).setPlanDelCliente(venta.getPlanVendido());
+					
 				}
 				vendedor.setComision(venta.getTotalDeVenta());
 				return true;
@@ -196,20 +209,24 @@ public class Empresa {
 	}
 
 	public Cliente buscarCliente(Integer numeroCliente) {
+		
 		Cliente clienteBuscado = null;
 		for (Cliente cliente : listaDeClientes) {
+			
 			if (cliente.getNumeroDeCliente().equals(numeroCliente)) {
+				
 				clienteBuscado = cliente;
 			}
 		}
 		return clienteBuscado;
 	}
-	
+
 	public Vendedor buscarVendedorPorVentaRealizada(Integer numeroDeVenta) {
 		Vendedor vendedorBuscado = null;
-		
+
 		for (Venta venta : this.listaDeVentas) {
 			if (venta.getNumeroDeVenta().equals(numeroDeVenta)) {
+				
 				vendedorBuscado = venta.getVendedor();
 				return vendedorBuscado;
 			}
@@ -218,8 +235,10 @@ public class Empresa {
 	}
 
 	public Boolean cambiarPlanCliente(Integer numeroCliente, Integer idPlanTelefonico) {
+		
 		if (this.listaDeClientes.contains(buscarCliente(numeroCliente))
 				&& this.listaDePlanes.contains(buscarPlan(idPlanTelefonico))) {
+			
 			buscarCliente(numeroCliente).setPlanDelCliente(buscarPlan(idPlanTelefonico));
 			return true;
 		}
@@ -227,49 +246,64 @@ public class Empresa {
 	}
 
 	public Boolean recepcionConsulta(Integer numeroAgente, String descripcionConsulta, Cliente cliente) {
+		
 		AgenteDeServicio representante = buscarAgente(numeroAgente);
+		
 		if (this.listaDeEmpleados.contains(representante) && this.listaDeClientes.contains(cliente)) {
+			
 			contadorConsultas++;
 			Consulta consulta = new Consulta(contadorConsultas, descripcionConsulta, Estado.enCurso, cliente);
 			representante.setOcupado(true);
 			consulta.asignarEmpleado(representante);
 			return this.listaDeConsultas.add(consulta);
+			
 		}
 		return false;
 	}
-	
-	public ArrayList<Consulta> buscarConsultaPorCliente(Integer nroCliente){
-		ArrayList<Consulta> listaDeConsultas= new ArrayList<Consulta>();
-		Cliente clienteObtenido=buscarCliente(nroCliente);
+
+	public ArrayList<Consulta> buscarConsultaPorCliente(Integer nroCliente) {
 		
-		if(clienteObtenido!=null) {
-			
-			for(Consulta consultaActual:this.listaDeConsultas) {
-				
-				if(consultaActual.getClienteDeReclamo().equals(clienteObtenido)) {
-					 listaDeConsultas.add(consultaActual);
+		ArrayList<Consulta> listaDeConsultas = new ArrayList<Consulta>();
+		Cliente clienteObtenido = buscarCliente(nroCliente);
+
+		if (clienteObtenido != null) {
+
+			for (Consulta consultaActual : this.listaDeConsultas) {
+
+				if (consultaActual.getClienteDeReclamo().equals(clienteObtenido)) {
+					listaDeConsultas.add(consultaActual);
 				}
-			}	
+			}
 		}
-		return listaDeConsultas;	
+		return listaDeConsultas;
 	}
 
 	public Boolean cambiarEstadoConsulta(Integer nroConsulta, Estado estado) {
+		
 		for (Consulta consulta : listaDeConsultas) {
-			if (consulta.getNroConsulta().equals(nroConsulta))
+			
+			if (consulta.getNroConsulta().equals(nroConsulta)) {
+				
 				consulta.setEstado(estado);
-			buscarAgente(consulta.getEmpleadoAsignado().getNumeroDeEmpleado()).setOcupado(false);
-			return true;
+				buscarAgente(consulta.getEmpleadoAsignado().getNumeroDeEmpleado()).setOcupado(false);
+				return true;
+			}
 		}
-		return false;
+		return false;	
 	}
 
 	public Boolean recepcionConsulta(Integer numeroAgente, String descripcionConsulta, Cliente cliente,
 			Integer numeroTecnico, Equipo equipo) {
+		
 		AgenteDeServicio representante = buscarAgente(numeroAgente);
+		
 		if (this.listaDeEmpleados.contains(representante) && this.listaDeClientes.contains(cliente)) {
+			
 			contadorConsultas++;
-			Consulta consulta = new Consulta(contadorConsultas, descripcionConsulta, Estado.enCurso, cliente, buscarTecnico(numeroTecnico));
+			
+			Consulta consulta = new Consulta(contadorConsultas, descripcionConsulta, Estado.enCurso, cliente,
+					buscarTecnico(numeroTecnico));
+			
 			representante.setOcupado(true);
 			consulta.asignarEmpleado(representante);
 			equipoEnReparacion(numeroTecnico, equipo);
@@ -297,12 +331,12 @@ public class Empresa {
 		}
 		return false;
 	}
-	
+
 	public Consulta buscarConsulta(Integer nroDeConsulta) {
-		
-		for(Consulta consultaActual: this.listaDeConsultas) {
-			if(consultaActual.getNroConsulta().equals(nroDeConsulta)) {
-				
+
+		for (Consulta consultaActual : this.listaDeConsultas) {
+			if (consultaActual.getNroConsulta().equals(nroDeConsulta)) {
+
 				return consultaActual;
 			}
 		}
