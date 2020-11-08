@@ -92,10 +92,23 @@ public class Empresa {
 		}
 		return false;
 	}
-
-
+	public Cliente buscarCliente(Integer numeroCliente) {
+		Cliente clienteBuscado = null;
+		for (Cliente cliente : listaDeClientes) {
+			if(cliente.getNumeroDeCliente().equals(numeroCliente)) {
+				clienteBuscado = cliente;
+			}
+		}
+		return clienteBuscado;
+	}
+	public Boolean cambiarPlan(Integer numeroCliente, Integer idPlanTelefonico) {
+		if(buscarCliente(numeroCliente)!=null&&buscarPlan(idPlanTelefonico)!=null) {
+			buscarCliente(numeroCliente).setPlanDelCliente(buscarPlan(idPlanTelefonico));
+			return true;
+		}
+		return false;
 	
-
+	}
 	public Boolean agregarVenta(Venta venta) {
         Vendedor vendedor= buscarVendedor(venta.getVendedor().getNumeroDeEmpleado());
         if(listaDeEmpleados.contains(vendedor) &&
