@@ -45,12 +45,13 @@ public class tests {
 		Empleado jose = new Vendedor(1, 28.000, "Jose", 41728327);
 		Equipo equipoVendido = new Equipo("Lg K1", 7383, 9000.0);
 		PlanTelefonico planVendido = new PlanTelefonico(900.0, 4, "SuperPromo");
+		Cliente nuevoCliente = new Cliente("Carlos",40382237, 627285, planVendido, 1117272382);
 		
 		empresa.agregarEmpleado(jose);
 		empresa.agregarEquipo(equipoVendido);
 		empresa.agregarPlan(planVendido);
 		
-		Venta nuevaVenta = new Venta(143, empresa.buscarVendedor(1), 10000.0, equipoVendido, planVendido);
+		Venta nuevaVenta = new Venta(143, empresa.buscarVendedor(1), 10000.0, equipoVendido, planVendido, nuevoCliente);
 		
 		Boolean va = empresa.agregarVenta(nuevaVenta);
 		Boolean ve = true;
@@ -61,7 +62,6 @@ public class tests {
 
 	@Test
 	public void queSePuedaAgregarUnEquipo() {
-
 		Empresa empresa = new Empresa("sarasa");
 		Equipo motorola = new Equipo("J7", 123, 40000.0);
 
@@ -73,7 +73,6 @@ public class tests {
 
 	@Test
 	public void queSePuedaEliminarUnEquipo() {
-
 		Empresa empresa = new Empresa("sarasa");
 		Equipo motorola = new Equipo("J7", 123, 40000.0);
 
@@ -88,7 +87,6 @@ public class tests {
 
 	@Test
 	public void queSePuedaBuscarUnEquipo() {
-
 		Empresa empresa = new Empresa("sarasa");
 		Equipo motorola = new Equipo("J7", 123, 40000.0);
 
@@ -114,25 +112,26 @@ public class tests {
 	
 	@Test
 	public void queSePuedaAgregarUnPlan() {
-
 		Empresa empresa = new Empresa("sarasa");
 		PlanTelefonico plan = new PlanTelefonico(1000.0, 10, "Plan Basico");
 		empresa.agregarPlan(plan);
 		Integer resultadoEsperado=1;
 		Integer resultadoObtenido=empresa.getPlanesVigentes().size();
+	
 		assertEquals(resultadoEsperado, resultadoObtenido);
 	}
 	
 	@Test
 	public void queSePuedaEliminarUnPlan() {
-
 		Empresa empresa = new Empresa("sarasa");
 		PlanTelefonico plan = new PlanTelefonico(1000.0, 10, "Plan Basico");
 		empresa.agregarPlan(plan);
 		Integer resultadoEsperado=0;
 		empresa.eliminarPlan(10);
 		Integer resultadoObtenido=empresa.getPlanesVigentes().size();
+		
 		assertEquals(resultadoEsperado, resultadoObtenido);	
-
 	}
+	
+	
 }

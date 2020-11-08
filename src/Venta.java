@@ -4,15 +4,17 @@ public class Venta {
 	private Vendedor vendedor;
 	private Double totalDeVenta;
 	private Equipo equipoVendido;
+	private Cliente cliente;
 	private PlanTelefonico planVendido;
 	
-	public Venta(Integer numeroDeVenta, Vendedor vendedor, Double totalDeVenta, Equipo equipoVendido, PlanTelefonico planVendido) {
+	public Venta(Integer numeroDeVenta, Vendedor vendedor, Double totalDeVenta, Equipo equipoVendido, PlanTelefonico planVendido, Cliente cliente) {
 		super();
 		this.numeroDeVenta = numeroDeVenta;
 		this.vendedor = vendedor;
 		this.totalDeVenta = totalDeVenta;
 		this.equipoVendido = equipoVendido;
 		this.planVendido = planVendido;
+		this.cliente = cliente;
 	}
 
 	public Integer getNumeroDeVenta() {
@@ -54,6 +56,14 @@ public class Venta {
 
 	public void setPlanVendido(PlanTelefonico planVendido) {
 		this.planVendido = planVendido;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	@Override
