@@ -133,5 +133,8 @@ public class tests {
 		assertEquals(resultadoEsperado, resultadoObtenido);	
 	}
 	
-	
+	@Test
+	public void queSePuedaRealizarUnaConsulta() {
+		
+	}
 }

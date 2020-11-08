@@ -7,7 +7,7 @@ public class Consulta {
 	private Cliente cliente;
 	
 	
-	public Consulta(Integer nroConsulta, String descripcion, Estado estado,Cliente cliente,Empleado empleado) {
+	public Consulta(Integer nroConsulta, String descripcion, Estado estado,Cliente cliente) {
 		super();
 		this.nroConsulta = nroConsulta;
 		this.descripcion = descripcion;

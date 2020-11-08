@@ -115,12 +115,12 @@ public class Empresa {
     }
 	
 	public void recepcionConsulta(Empleado empleadoAsignar, String descripcionConsulta,Cliente cliente) {
-		
-		contadorConsultas++;
-		Consulta consulta= new Consulta (contadorConsultas,descripcionConsulta,Estado.enCurso,cliente,empleadoAsignar);
-		consulta.asignarEmpleado(empleadoAsignar);
-		listaDeConsultas.add(consulta);
-		
+		if(this.listaDeEmpleados.contains(empleadoAsignar) && this.listaDeClientes.contains(cliente)) {
+			contadorConsultas++;
+			Consulta consulta= new Consulta (contadorConsultas,descripcionConsulta,Estado.enCurso,cliente);
+			consulta.asignarEmpleado(empleadoAsignar);
+			listaDeConsultas.add(consulta);
+		}
 	}
 	public Boolean cambiarEstadoReclamo(Integer nroReclamo,Estado estado) {
 		for (Consulta consulta : listaDeConsultas){
