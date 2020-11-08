@@ -8,25 +8,24 @@ public class Empresa {
 	private Set<Cliente> listaDeClientes;
 	private Set<PlanTelefonico> listaDePlanes;
 	private Set<Equipo> listaDeEquiposDisponibles;
-<<<<<<< HEAD
-	private Set <Consulta> listaDeConsultas;
 	private Integer contadorConsultas=0;
-=======
 	private Set<Venta> listaDeVentas;
->>>>>>> b9d0fc9c2b453a44231e36165c6f3cb49b036d3a
 
 	public Empresa(String nombreDeLaEmpresa) {
-
 		this.nombreDeLaEmpresa = nombreDeLaEmpresa;
-
 		this.listaDeEmpleados = new HashSet<Empleado>();
 		this.listaDeClientes = new HashSet<Cliente>();
 		this.listaDePlanes = new HashSet<PlanTelefonico>();
 		this.listaDeEquiposDisponibles = new HashSet<Equipo>();
+		this.listaDeVentas = new HashSet<Venta>();
 	}
 
 	public Boolean agregarEmpleado(Empleado empleado) {
 		return listaDeEmpleados.add(empleado);
+	}
+	
+	public Boolean agregarEquipo(Equipo equipoNuevo) {
+		return this.listaDeEquiposDisponibles.add(equipoNuevo);
 	}
 
 	public Boolean eliminarEquipoViejo(Integer idDelEquipo) {
@@ -38,10 +37,6 @@ public class Empresa {
 			}
 		}
 		return false;
-	}
-	
-	public Boolean agregarEquipo(Equipo equipoNuevo) {
-		return this.listaDeEquiposDisponibles.add(equipoNuevo);
 	}
 
 	public Boolean agregarPlan(PlanTelefonico planNuevo) {
@@ -65,15 +60,7 @@ public class Empresa {
 			}
 		}
 		
-<<<<<<< HEAD
-		this.listaDeEmpleados= new HashSet<Empleado>();
-		this.listaDeClientes= new HashSet<Cliente>();
-		this.listaDePlanes= new HashSet<PlanTelefonico>();
-		this.listaDeEquiposDisponibles= new HashSet<Equipo>();
-		this.listaDeConsultas=new HashSet<Consulta>();
-=======
 		return null;
->>>>>>> 73ffdba692079c22f29effd1bde9ef028c2cb66d
 	}
 	
 	public PlanTelefonico buscarPlan(Integer IdplanABuscar) {
@@ -86,47 +73,30 @@ public class Empresa {
 		}
 		return null;
 	}
-<<<<<<< HEAD
-	public void reclamoTecnico(Tecnico tecnicoAsignar, String descripcionReclamo,Cliente cliente) {
-		
-		contadorConsultas++;
-		Consulta reclamo= new Reclamo (contadorConsultas,descripcionReclamo,Estado.enCurso,cliente,tecnicoAsignar);
-		reclamo.asignarEmpleado(tecnicoAsignar);
-		listaDeConsultas.add(reclamo);
-		
-	}
-	public Boolean cambiarEstadoReclamo(Integer nroReclamo,Estado estado) {
-		for (Consulta consulta : listaDeConsultas){
-			if(consulta.getNroConsulta().equals(nroReclamo))
-				consulta.setEstado(estado);
-				return true;
-		}
-		return false;
-	}
 
-=======
-	
-<<<<<<< HEAD
 	public Boolean agregarVenta(Venta venta) {
 		Vendedor vendedor= buscarVendedor(venta.getVendedor().getNumeroDeEmpleado());
 		if(listaDeEmpleados.contains(vendedor) &&
 				listaDeEquiposDisponibles.contains(venta.getEquipoVendido()) &&
 				listaDePlanes.contains(venta.getPlanVendido())) {
-			if(listaDeVentas.add(venta))
+			if(listaDeVentas.add(venta)) {
 			vendedor.setComision();
-=======
+			return true;
+			}
+		}
+		return false;
+	}
+
 	public Boolean ModificarElPrecioDeUnPlanTelefonico(Double precioActualizado, Integer IdpPlanQueDeseoModificar) {
 		
 		if(this.buscarPlan(IdpPlanQueDeseoModificar)!=null) {
 			
 			this.buscarPlan(IdpPlanQueDeseoModificar).setPrecio(precioActualizado);
->>>>>>> 73ffdba692079c22f29effd1bde9ef028c2cb66d
 			return true;
 		}
 		return false;
 	}
-	
-<<<<<<< HEAD
+
 	public Vendedor buscarVendedor(Integer numeroDeEmpleado) {
 		Vendedor vendedorBuscado = null;
 		for (Empleado empleado : listaDeEmpleados) {
@@ -164,8 +134,7 @@ public class Empresa {
 	public Set<Venta> getListaDeVentas() {
 		return listaDeVentas;
 	}
->>>>>>> b9d0fc9c2b453a44231e36165c6f3cb49b036d3a
-=======
+
 	public Boolean eliminarPlan(Integer id) {
 		
 		for(PlanTelefonico planActual: this.listaDePlanes) {
@@ -176,5 +145,4 @@ public class Empresa {
 		}	
 		return false;
 	}
->>>>>>> 73ffdba692079c22f29effd1bde9ef028c2cb66d
 }
