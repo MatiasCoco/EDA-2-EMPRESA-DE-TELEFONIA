@@ -8,24 +8,24 @@ public class Empresa {
 	private Set<Cliente> listaDeClientes;
 	private Set<PlanTelefonico> listaDePlanes;
 	private Set<Equipo> listaDeEquiposDisponibles;
+	private Set <Consulta> listaDeConsultas;
 	private Integer contadorConsultas=0;
 	private Set<Venta> listaDeVentas;
 
+
 	public Empresa(String nombreDeLaEmpresa) {
+
 		this.nombreDeLaEmpresa = nombreDeLaEmpresa;
+
 		this.listaDeEmpleados = new HashSet<Empleado>();
 		this.listaDeClientes = new HashSet<Cliente>();
 		this.listaDePlanes = new HashSet<PlanTelefonico>();
 		this.listaDeEquiposDisponibles = new HashSet<Equipo>();
-		this.listaDeVentas = new HashSet<Venta>();
+		this.listaDeConsultas=new HashSet<Consulta>();
 	}
 
 	public Boolean agregarEmpleado(Empleado empleado) {
 		return listaDeEmpleados.add(empleado);
-	}
-	
-	public Boolean agregarEquipo(Equipo equipoNuevo) {
-		return this.listaDeEquiposDisponibles.add(equipoNuevo);
 	}
 
 	public Boolean eliminarEquipoViejo(Integer idDelEquipo) {
@@ -37,6 +37,10 @@ public class Empresa {
 			}
 		}
 		return false;
+	}
+	
+	public Boolean agregarEquipo(Equipo equipoNuevo) {
+		return this.listaDeEquiposDisponibles.add(equipoNuevo);
 	}
 
 	public Boolean agregarPlan(PlanTelefonico planNuevo) {
@@ -51,10 +55,8 @@ public class Empresa {
 		return (HashSet<Equipo>) this.listaDeEquiposDisponibles;
 	}
 	
-	public Equipo buscarEquipo(Equipo equipoDeseado) {
-		
+	public Equipo buscarEquipo(Equipo equipoDeseado) {	
 		for(Equipo equipoActual:this.listaDeEquiposDisponibles) {
-			
 			if(equipoActual.equals(equipoDeseado)) {
 				return equipoActual;
 			}
@@ -74,28 +76,63 @@ public class Empresa {
 		return null;
 	}
 
-	public Boolean agregarVenta(Venta venta) {
-		Vendedor vendedor= buscarVendedor(venta.getVendedor().getNumeroDeEmpleado());
-		if(listaDeEmpleados.contains(vendedor) &&
-				listaDeEquiposDisponibles.contains(venta.getEquipoVendido()) &&
-				listaDePlanes.contains(venta.getPlanVendido())) {
-			if(listaDeVentas.add(venta)) {
-			vendedor.setComision();
-			return true;
+	public void recepcionConsulta(Empleado empleadoAsignar, String descripcionConsulta,Cliente cliente) {
+		
+		contadorConsultas++;
+		Consulta consulta= new Consulta (contadorConsultas,descripcionConsulta,Estado.enCurso,cliente,empleadoAsignar);
+		consulta.asignarEmpleado(empleadoAsignar);
+		listaDeConsultas.add(consulta);
+		
+	}
+	public Boolean cambiarEstadoReclamo(Integer nroReclamo,Estado estado) {
+		for (Consulta consulta : listaDeConsultas){
+			if(consulta.getNroConsulta().equals(nroReclamo))
+				consulta.setEstado(estado);
+				return true;
+		}
+		return false;
+	}
+	public Cliente buscarCliente(Integer numeroCliente) {
+		Cliente clienteBuscado = null;
+		for (Cliente cliente : listaDeClientes) {
+			if(cliente.getNumeroDeCliente().equals(numeroCliente)) {
+				clienteBuscado = cliente;
 			}
 		}
-		return false;
+		return clienteBuscado;
 	}
+	public Boolean cambiarPlan(Integer numeroCliente, Integer idPlanTelefonico) {
+		if(buscarCliente(numeroCliente)!=null&&buscarPlan(idPlanTelefonico)!=null) {
+			buscarCliente(numeroCliente).setPlanDelCliente(buscarPlan(idPlanTelefonico));
+			return true;
+		}
+		return false;
+	
+	}
+	public Boolean agregarVenta(Venta venta) {
+        Vendedor vendedor= buscarVendedor(venta.getVendedor().getNumeroDeEmpleado());
+        if(listaDeEmpleados.contains(vendedor) &&
+                listaDeEquiposDisponibles.contains(venta.getEquipoVendido()) &&
+                listaDePlanes.contains(venta.getPlanVendido())) {
+            if(listaDeVentas.add(venta)) {
+            vendedor.setComision();
+            return true;
+            }
+        }
+        return false;
+    }
 
-	public Boolean ModificarElPrecioDeUnPlanTelefonico(Double precioActualizado, Integer IdpPlanQueDeseoModificar) {
+	public Boolean ModificarElPrecioDeUnPlanTelefonico(Double precioActualizado, Integer IdPlanQueDeseoModificar) {
 		
-		if(this.buscarPlan(IdpPlanQueDeseoModificar)!=null) {
+		if(this.buscarPlan(IdPlanQueDeseoModificar)!=null) {
 			
-			this.buscarPlan(IdpPlanQueDeseoModificar).setPrecio(precioActualizado);
+			this.buscarPlan(IdPlanQueDeseoModificar).setPrecio(precioActualizado);
+
 			return true;
 		}
 		return false;
 	}
+	
 
 	public Vendedor buscarVendedor(Integer numeroDeEmpleado) {
 		Vendedor vendedorBuscado = null;
@@ -136,13 +173,11 @@ public class Empresa {
 	}
 
 	public Boolean eliminarPlan(Integer id) {
-		
-		for(PlanTelefonico planActual: this.listaDePlanes) {
-			
-			if(this.buscarPlan(id)!=null) {
-				return this.listaDePlanes.remove(this.buscarPlan(id));
-			}
-		}	
-		return false;
+
+        if(this.buscarPlan(id)!=null) {
+            return this.listaDePlanes.remove(this.buscarPlan(id));
+        }
+        return false;
 	}
+
 }

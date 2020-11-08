@@ -5,6 +5,7 @@ public class Cliente extends Persona {
 	private PlanTelefonico planDelCliente; 
 	private Integer numeroDeTelefono;
 	
+	
 	public Cliente(String nombre, Integer dni, Integer numeroDeCliente, PlanTelefonico planDelCliente,
 			Integer numeroDeTelefono) {
 		super(nombre, dni);
